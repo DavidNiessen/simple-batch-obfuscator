@@ -1,4 +1,4 @@
-# Simple Bat Obfuscator
+# Simple Batch Obfuscator
 
 **Disclaimer: This project is for educational purposes only!!!**
 
