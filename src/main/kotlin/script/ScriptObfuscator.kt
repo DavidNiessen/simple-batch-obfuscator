@@ -1,12 +1,19 @@
 package script
 
+import Config
 import utils.CommandUtils
+import utils.PayloadObfuscator
 import utils.RandomVariableGenerator
 
 object ScriptObfuscator {
 
     fun obfuscate(command: String): ScriptTemplate {
-        val (orderedNames, statements) = CommandUtils.chunkAndRandomize(command)
+        var payload = command
+        if (Config.powerShellSettings.runAsPowershell) {
+            payload = PayloadObfuscator.asPowershellCommand(payload, Config.powerShellSettings.encode)
+        }
+
+        val (orderedNames, statements) = CommandUtils.chunkAndRandomize(payload)
 
         val setCommand = generateSetCommand()
         val setVariableName = setCommand.variableName
