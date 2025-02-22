@@ -2,7 +2,7 @@
 
 **Disclaimer: This project is for educational purposes only!!!**
 
-This program creates an obfuscated batch script that executes a command.
+This program creates an obfuscated batch script that can execute a powershell command.
 
 ### TODO
 
