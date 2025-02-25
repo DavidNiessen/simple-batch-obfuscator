@@ -6,6 +6,7 @@ object RandomVariableGenerator {
     private val upperLetters = 65..90
 
     private val ranges = listOf(lowerLetters, upperLetters)
+    private val existingVariableNames = mutableListOf<String>()
 
     // [variable name, statement]
     fun generateVariable(value: String) = generateVariableName().let {
@@ -19,6 +20,9 @@ object RandomVariableGenerator {
             val randomRange = ranges.random()
             result += randomRange.random().toChar()
         }
+
+        if (existingVariableNames.contains(result)) return generateVariableName(length)
+        existingVariableNames.add(result)
 
         return result
     }
